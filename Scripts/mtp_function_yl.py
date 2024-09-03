@@ -1,5 +1,5 @@
-# Functions for mt_yl
-# Version update time: 2024/04/03
+# Functions for mtp_yl
+# Version update time: 2024/09/03
 
 import os 
 import matplotlib
@@ -16,6 +16,13 @@ import warnings
 from pathlib import Path
 import random
 from scipy.stats import entropy
+
+# For function featureselection()
+from sklearn import metrics
+import statsmodels.api as sm
+import statsmodels.tools as tools
+from sklearn import linear_model
+from mlxtend.feature_selection import SequentialFeatureSelector
 
 def show_anns(anns):
     if len(anns) == 0:

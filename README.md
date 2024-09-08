@@ -21,7 +21,8 @@ $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     - Cross validation k: 5, 10, 15, 20...
 - Apply regression model using the selected features and compare the regression result
   - Model performance: R-squared, Adj. R-squared
-  - (Significant features) 
+  - (Significant features)
+- Apply correlation analysis for all variables
 
 
 

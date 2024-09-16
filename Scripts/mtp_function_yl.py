@@ -517,7 +517,7 @@ def entropy_img(img):
     image_entropy = entropy(prob_dist) # Default base e
     return image_entropy
 
-# Added 09032024 - For sequential forward/backward floating feature selection
+# Added 09032024 - For sequential forward/backward floating feature selection - Logistic regression
 # Parameters
 ## Direction: True or False
 ## Score: performance scoring metric (different for classifiers and regressors)
@@ -525,7 +525,7 @@ def entropy_img(img):
 ## x: independent variables
 ## y: dependent variables
 ## return to an object
-def featureselection(direction, score, cvn, x, y):
+def featureselection_log(direction, score, cvn, x, y):
     sfs = SequentialFeatureSelector(linear_model.LogisticRegression(max_iter = 400),
                                 k_features='best',
                                 forward=direction,
@@ -535,6 +535,26 @@ def featureselection(direction, score, cvn, x, y):
                                 cv=cvn,
                                 n_jobs = -1
                                )
-    sfsr = sfs.fit(x, y)
-    
+    sfsr = sfs.fit(x, y)    
+    return sfsr
+
+# Added 09132024 - For sequential forward/backward floating feature selection - Linear regression
+# Parameters
+## Direction: True or False
+## Score: performance scoring metric (different for classifiers and regressors)
+## cvn: number of k value for k-fold cross validation
+## x: independent variables
+## y: dependent variables
+## return to an object
+def featureselection_lin(direction, score, cvn, x, y):
+    sfs = SequentialFeatureSelector(linear_model.LinearRegression(),
+                                    k_features='best',
+                                    forward=direction,
+                                    floating=True,
+                                    verbose = 0, # For checking the logging
+                                    scoring=score, 
+                                    cv=cvn,
+                                    n_jobs = -1 # For parallel jobs
+                                   )
+    sfsr = sfs.fit(x, y)    
     return sfsr

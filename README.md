@@ -24,6 +24,16 @@ $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   - (Significant features)
 - Apply correlation analysis for all variables
 
+### Work 1_Regression_presence_of_accident
+- Focus on dependent variable: presence of accident
+- Focus on using logistic regression model
+- Filtering features
+    - Features with high pairwise correlation values
+    - Features from 'unsuitable' datasets
+    - Features unnecessary for dummay variables generated from categorical features
+- Check and compare distributions of curb-related variables of accident-present locations and accident-absent locations using Kolmogorov-Smirnov test
+- Build different feature sets, apply feature selection methods, apply logistic regression models, and compare results of the regression models (adjusted r-squared values, features recognized as significantly correlated)
+- Calculate VIF
 
 
 $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$

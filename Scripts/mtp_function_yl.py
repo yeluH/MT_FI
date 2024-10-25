@@ -558,3 +558,17 @@ def featureselection_lin(direction, score, cvn, x, y):
                                    )
     sfsr = sfs.fit(x, y)    
     return sfsr
+
+# Added 10252024 - For printing features which were recognized as significantly correlated with dependent variables
+# Parameters
+## r: regression result of ols summary or logit summary
+def printsig(r):
+    df = r.pvalues
+    dfo = df[df<0.05]
+    dfo = dfo.to_frame()
+    dfo.loc[dfo[0] >= 0.01, 'sig'] = '*'
+    dfo.loc[(dfo[0] < 0.01) & (dfo[0] >= 0.001) , 'sig'] = '**'
+    dfo.loc[dfo[0] < 0.001, 'sig'] = '***'
+    dfo = dfo.rename_axis('feature').reset_index()
+    print(dfo, len(dfo))
+    return dfo

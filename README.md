@@ -35,6 +35,20 @@ $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Build different feature sets, apply feature selection methods, apply logistic regression models, and compare results of the regression models (adjusted r-squared values, features recognized as significantly correlated)
 - Calculate VIF
 
+### Work 2_Regression_presence_of_accident
+- Focus on dependent variable: presence of accident
+- Focus on using logistic regression model
+- Calculate VIF of each feature (in the filtered feature set based on work 1)
+- Remove features with high VIF values until all remaining features have VIF values less than 5
+- Perform feature selection and compare selection results
+    - Parameters:
+        - Methods: forward/backward + floating
+        - Scoring metrics: accuracy, f1, precision, recall
+        - Cross validation k: 5, 10 
+- Apply logistic regression model using features selected from previous steps
+- Summarize features which are recoginized as significantly correlated with presence of accident
+
+
 
 $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$
 

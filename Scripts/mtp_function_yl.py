@@ -572,3 +572,18 @@ def printsig(r):
     dfo = dfo.rename_axis('feature').reset_index()
     print(dfo, len(dfo))
     return dfo
+
+# Added 10282024 - For checking distribution of curb-related variables in y-present locations (yp = 1) and y-absent locations (yp = 1) using Kolmogorov-Smimov test
+## yp is one binary dependent variable (could be accident-presence, person-injury-presence, property-damage-presence, severe-injury-presence, light-injury-presence)
+## Curb-related varialbes include 'cp', 'cmean', 'cmin', 'cmax'
+# Parameters
+## df is a dataframe including columns of all four curb-related variables as well as yp
+## dev is one target binary dependent variable yp
+def check_cv_dist (df, dev):
+    df1 = df.loc[df[dev] == 1]
+    df0 = df.loc[df[dev] == 0]
+    cvl = ['cp', 'cmean', 'cmin', 'cmax']
+    print(cvl[0], ks_2samp(df1[cvl[0]], df0[cvl[0]]))
+    print(cvl[1], ks_2samp(df1[cvl[1]], df0[cvl[1]]))
+    print(cvl[2], ks_2samp(df1[cvl[2]], df0[cvl[2]]))
+    print(cvl[3], ks_2samp(df1[cvl[3]], df0[cvl[3]]))

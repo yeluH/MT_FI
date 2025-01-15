@@ -60,3 +60,4 @@ $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Issues
 - Errors were found in setting scoring metrics for logistic regression. (20240903) *Solved*
 - Errors were found in merging transformed data. (20241122) *Solved*
+- Issues were found with the variable 'dvfpath' (20250115)

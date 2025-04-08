@@ -1,5 +1,5 @@
 # Functions for mtp_yl
-# Version update time: 2024/10/28
+# Version update time: 2025/04/07
 
 import os 
 import matplotlib
@@ -570,8 +570,7 @@ def printsig(r):
     dfo.loc[(dfo[0] < 0.01) & (dfo[0] >= 0.001) , 'sig'] = '**'
     dfo.loc[dfo[0] < 0.001, 'sig'] = '***'
     dfo = dfo.rename_axis('feature').reset_index()
-    print(dfo, len(dfo))
-    return dfo
+    return dfo 
 
 # Added 10282024 - For checking distribution of curb-related variables in y-present locations (yp = 1) and y-absent locations (yp = 1) using Kolmogorov-Smimov test
 ## yp is one binary dependent variable (could be accident-presence, person-injury-presence, property-damage-presence, severe-injury-presence, light-injury-presence)
@@ -587,3 +586,14 @@ def check_cv_dist (df, dev):
     print(cvl[1], ks_2samp(df1[cvl[1]], df0[cvl[1]]))
     print(cvl[2], ks_2samp(df1[cvl[2]], df0[cvl[2]]))
     print(cvl[3], ks_2samp(df1[cvl[3]], df0[cvl[3]]))
+
+# Added 02202025 - For printing features which were recognized as significantly correlated with dependent variables, and their coefficients and p values
+# Parameters
+## r: regression result of ols summary or logit summary    
+def printsigcoef(r):
+    df1 = printsig(r)
+    df2 = r.params.to_frame().rename_axis('feature').reset_index()
+    df2 = df2.rename(columns = {0:'coef'})
+    dfsigcoef = pd.merge(df1, df2, on = ['feature'])
+    print(dfsigcoef)
+    return dfsigcoef
